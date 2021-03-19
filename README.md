@@ -1,7 +1,7 @@
 # E-Flea
 Group project for CPT202 at XJTLU <br>
-Enjoying coding and extending! <br>
-Database (eflea) for user login <br><br><br>
+Enjoying coding and extending! <br><br><br>
+Database (eflea) for user login <br>
 User table <br>
 
 Attribute|Type|Note
