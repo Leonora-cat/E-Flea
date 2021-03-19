@@ -5,7 +5,7 @@ Database (eflea) for user login <br><br><br>
 User table <br>
 
 Attribute|Type|Note
----|:--:|---:
+:--:|:--:|:--:
 id|long|Primary key
 username|varchar|
 password|varchar|
