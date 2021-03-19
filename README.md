@@ -6,7 +6,7 @@ User table <br>
 
 Attribute|Type|Note
 :--:|:--:|:--:
-id|long|Primary key
+id|BigInt|Primary key
 username|varchar|
 password|varchar|
 date_of_birth|date|
