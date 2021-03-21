@@ -74,22 +74,4 @@ public class UserController {
         userMap.put("msg", "successfully registered");
         return userMap;
     }
-
-    @PostMapping(value = "/test")
-    public String test(@RequestBody Map<String, Object> accountInfo){
-        String username = (String) accountInfo.get("username");
-        String password = (String) accountInfo.get("password");
-        String dateOfBirthString = (String) accountInfo.get("dateOfBirth");
-        String sexString = (String) accountInfo.get("sex");
-        Boolean sex = Boolean.parseBoolean(sexString);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        java.util.Date dateOfBirthDate = null;
-        try {
-            dateOfBirthDate = format.parse(dateOfBirthString);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Date dateOfBirth = new Date(dateOfBirthDate.getTime());
-        return password;
-    }
 }
