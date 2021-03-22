@@ -21,6 +21,7 @@ POST
 Content-Type: application/json
 
 #### Body
+format: JSON
 
 ```kotlin
 {
