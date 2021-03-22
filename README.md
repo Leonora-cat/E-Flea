@@ -14,9 +14,10 @@ User table <br>
 
 Attribute|Type|Note
 :--:|:--:|:--:
-id|BigInt|Primary key
+uId|BigInt|Primary key
 username|varchar|
 password|varchar|
-date_of_birth|date|
+email|varchar
+dateOfBirth|date|
 sex|Boolean| 0 for male, 1 for female
 
