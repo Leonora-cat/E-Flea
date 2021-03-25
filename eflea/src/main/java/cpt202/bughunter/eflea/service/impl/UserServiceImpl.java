@@ -12,7 +12,18 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public User toLogin(String username,String password) {
-        return userMapper.getUserByNameAndPwd(username,password);
+    public User toLogin(String username, String password) {
+        return userMapper.getUserByNameAndPwd(username, password);
+    }
+
+    @Override
+    public String resetPassword(String username, String email, String newPassword) {
+        User user = userMapper.getUserByNameAndEmail(username, email);
+        if(user == null){
+            return "error";
+        }
+        userMapper.resetPassword(username, email, newPassword);
+        return "success";
+
     }
 }
