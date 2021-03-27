@@ -6,6 +6,8 @@ import cpt202.bughunter.eflea.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -24,6 +26,15 @@ public class UserServiceImpl implements UserService {
         }
         userMapper.resetPassword(username, email, newPassword);
         return "success";
+    }
 
+    @Override
+    public User getUserByName(String username) {
+        return userMapper.getUserByName(username);
+    }
+
+    @Override
+    public void insertUser(String username, String password, String email, Date dateOfBirth, Boolean sex) {
+        userMapper.insertUser(username, password, email, dateOfBirth, sex);
     }
 }

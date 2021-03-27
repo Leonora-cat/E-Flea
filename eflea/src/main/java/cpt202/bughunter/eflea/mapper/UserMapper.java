@@ -14,8 +14,11 @@ public interface UserMapper {
     @Select("SELECT * FROM user WHERE username=#{username} AND email=#{email}")
     User getUserByNameAndEmail(@Param("username") String username, @Param("email") String email);
 
-    @Insert("INSERT INTO user(username,password,dateOfBirth,sex) VALUES (#{username},#{password},#{dateOfBirth},#{sex});")
-    void insertUser(@Param("username") String username, @Param("password") String password, @Param("dateOfBirth") Date dateOfBirth, @Param("sex") Boolean sex);
+    @Select("SELECT * FROM user WHERE username=#{username}")
+    User getUserByName(@Param("username") String username);
+
+    @Insert("INSERT INTO user(username,password,email,dateOfBirth,sex) VALUES (#{username},#{password},#{email},#{dateOfBirth},#{sex});")
+    void insertUser(@Param("username") String username, @Param("password") String password,@Param("email") String email, @Param("dateOfBirth") Date dateOfBirth, @Param("sex") Boolean sex);
 
     @Update("UPDATE `user` SET password = #{password} WHERE username = #{username} AND email = #{email}")
     void resetPassword(@Param("username") String username, @Param("email") String email, @Param("password") String password);
