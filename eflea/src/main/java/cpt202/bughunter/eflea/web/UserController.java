@@ -5,9 +5,7 @@ import cpt202.bughunter.eflea.service.UserService;
 import cpt202.bughunter.eflea.util.CipherUtil;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -84,9 +82,46 @@ public class UserController {
         return userMap;
     }
 
-    @PostMapping("/resetPassword")
-    @ApiOperation(value = "resetPassword", notes = "if user forgets his password, he can reset his password using username and email")
-    public String resetPassword(@RequestBody User user) throws Exception {
-        return userService.resetPassword(user.getUsername(), user.getEmail(), user.getPassword());
+    @PostMapping("/forgetPassword")
+    @ApiOperation(value = "forgetPassword", notes = "if user forgets his password, he can reset his password using username and email")
+    public String resetPassword(@RequestBody Map<String, Object> accountInfo) throws Exception {
+        return userService.resetPassword((String)accountInfo.get("username"),(String)accountInfo.get("email"),(String)accountInfo.get("newPassword"));
+    }
+
+    @GetMapping("/{username}/home")
+    @ApiOperation(value = "homePage", notes = "return user info")
+    public Map<String, Object> homePage(@PathVariable("username") String username) {
+        Map<String, Object> userMap = new HashMap<>();
+        User user = userService.getUserByName(username);
+        userMap.put("userInfo", user);
+        return userMap;
+    }
+
+    @PostMapping("/editPersonalInfo")
+    @ApiOperation(value = "editPersonalInfo", notes = "edit personal info")
+    public String editPersonalInfo(@RequestBody Map<String, Object> accountInfo) {
+        String username = (String) accountInfo.get("username");
+        String email = (String) accountInfo.get("email");
+        String dateOfBirthString = (String) accountInfo.get("year") + "-" + accountInfo.get("month") + "-" + accountInfo.get("day");
+        Boolean sex = null;
+        if(accountInfo.get("sex").equals(0)){
+            sex = false;
+        }
+        else{
+            sex = true;
+        }
+        Date dateOfBirth = null;
+
+        if (dateOfBirthString.length() != 0) {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date dateOfBirthDate = null;
+            try {
+                dateOfBirthDate = format.parse(dateOfBirthString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            dateOfBirth = new Date(dateOfBirthDate.getTime());
+        }
+        return userService.editPersonalInfo(username, email, dateOfBirth, sex);
     }
 }

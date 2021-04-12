@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String resetPassword(String username, String email, String newPassword) {
         User user = userMapper.getUserByNameAndEmail(username, email);
-        if(user == null){
+        if (user == null) {
             return "error";
         }
         userMapper.resetPassword(username, email, newPassword);
@@ -37,4 +37,17 @@ public class UserServiceImpl implements UserService {
     public void insertUser(String username, String password, String email, Date dateOfBirth, Boolean sex) {
         userMapper.insertUser(username, password, email, dateOfBirth, sex);
     }
+
+    @Override
+    public String editPersonalInfo(String username, String email, Date dateOfBirth, Boolean sex) {
+        User user = userMapper.getUserByEmail(email);
+        if (user != null && !user.getUsername().equals(username)) {
+            return "try another email";
+        }
+        userMapper.updateEmail(email, username);
+        userMapper.updateDateOfBirth(dateOfBirth, username);
+        userMapper.updateSex(sex, username);
+        return "success";
+    }
+
 }

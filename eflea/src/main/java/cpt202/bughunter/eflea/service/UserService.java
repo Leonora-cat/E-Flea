@@ -11,4 +11,7 @@ public interface UserService {
 
     User getUserByName(String username);
     void insertUser(String username, String password,String email, Date dateOfBirth, Boolean sex);
+
+    String editPersonalInfo(String username,String email, Date dateOfBirth, Boolean sex);
+
 }
