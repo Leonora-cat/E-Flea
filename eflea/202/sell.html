@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 清除内外边距 */
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 清除浮动 */
+        
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+        
+        .clearfix {
+            *zoom: 1;
+        }
+        /* 清除列表前小圆点 */
+        
+        li {
+            list-style: none;
+        }
+        /* 背景设置 */
+        
+        .container {
+            position: relative;
+            background-image: url(image/background.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 1000px;
+        }
+        
+        .mainBox {
+            position: absolute;
+            top: 130px;
+            width: 1690px;
+            height: 300px;
+            background-color: thistle;
+        }
+        /* 设置标题栏 */
+        
+        .title {
+            height: 100px;
+            background-color: darkgreen;
+        }
+        
+        .image1 {
+            float: left;
+            height: 100px;
+            width: 100px;
+            background-color: yellowgreen;
+            background-image: url(image/ed.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .image2 {
+            float: left;
+            height: 100px;
+            width: 100px;
+            background-color: yellowgreen;
+            background-image: url(image/ing.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .afterImage {
+            float: left;
+            margin-top: 25px;
+            background-color: yellowgreen;
+        }
+        /* 设置表单样式 */
+        
+        .infoBar {
+            height: 60px;
+            background-color: brown;
+            overflow: hidden;
+        }
+        
+        .productBar {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .productBar li {
+            float: left;
+            float: left;
+            text-align: center;
+            height: 200px;
+            line-height: 200px;
+        }
+        
+        .infoBar li {
+            float: left;
+            text-align: center;
+            height: 60px;
+            line-height: 60px;
+        }
+        
+        .none {
+            width: 345px;
+            background-color: #fff;
+        }
+        
+        .describle {
+            width: 345px;
+            background-color: cornflowerblue;
+        }
+        
+        .price {
+            width: 200px;
+            background-color: blueviolet;
+        }
+        
+        .id {
+            width: 300px;
+            background-color: coral;
+        }
+        
+        .date {
+            width: 300px;
+            background-color: darkgreen;
+        }
+        
+        .state {
+            width: 200px;
+            background-color: darksalmon;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="container">
+        <div class="mainBox">
+            <div class="title clearfix">
+                <div class="image1"></div>
+                <h1 class="afterImage">
+                    Selling
+                </h1>
+            </div>
+
+
+            <ul class="infoBar clearfix">
+                <li class="none"></li>
+                <li class="describle">Describle</li>
+                <li class="price">Price</li>
+                <li class="id">Product ID</li>
+                <li class="date">Date</li>
+                <li class="state">State</li>
+            </ul>
+
+            <ul class="productBar clearfix">
+                <li class="none"></li>
+                <li class="describle">Describle</li>
+                <li class="price">Price</li>
+                <li class="id">Product ID</li>
+                <li class="date">Date</li>
+                <li class="state">State</li>
+            </ul>
+
+            <ul class="productBar clearfix">
+                <li class="none"></li>
+                <li class="describle">Describle</li>
+                <li class="price">Price</li>
+                <li class="id">Product ID</li>
+                <li class="date">Date</li>
+                <li class="state">State</li>
+            </ul>
+
+            <div class="title clearfix">
+                <div class="image2"></div>
+                <h1 class="afterImage">
+                    Sold Out
+                </h1>
+            </div>
+
+            <form action="#" method="POST">
+                <ul class="productBar clearfix">
+                    <li class="none"></li>
+                    <li class="describle">s</li>
+                    <li class="price">Price</li>
+                    <li class="id">Product ID</li>
+                    <li class="date">Date</li>
+                    <li class="state">State</li>
+                </ul>
+            </form>
+        </div>
+    </div> -->
+
+    <div class="container">
+        <div class="mainBox">
+            <div class="title clearfix">
+                <div class="image1"></div>
+                <h1 class="afterImage">
+                    Selling
+                </h1>
+            </div>
+
+
+            <ul class="infoBar clearfix">
+                <li class="none"></li>
+                <li class="describle">Describle</li>
+                <li class="price">Price</li>
+                <li class="id">Product ID</li>
+                <li class="date">Date</li>
+                <li class="state">State</li>
+            </ul>
+
+            <ul class="productBar clearfix">
+                <li class="none"></li>
+                <li class="describle">Describle</li>
+                <li class="price">Price</li>
+                <li class="id">Product ID</li>
+                <li class="date">Date</li>
+                <li class="state">State</li>
+            </ul>
+
+            <ul class="productBar clearfix">
+                <li class="none"></li>
+                <li class="describle">Describle</li>
+                <li class="price">Price</li>
+                <li class="id">Product ID</li>
+                <li class="date">Date</li>
+                <li class="state">State</li>
+            </ul>
+
+            <div class="title clearfix">
+                <div class="image2"></div>
+                <h1 class="afterImage">
+                    Sold Out
+                </h1>
+            </div>
+
+            <form action="#" method="POST">
+                <ul class="productBar clearfix">
+                    <li class="none"></li>
+                    <li class="describle">s</li>
+                    <li class="price">Price</li>
+                    <li class="id">Product ID</li>
+                    <li class="date">Date</li>
+                    <li class="state">State</li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

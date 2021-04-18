@@ -1,0 +1,382 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Collection Page</title>
+		<style>
+			body{
+				background-image: url(images/background.png);
+				background-repeat: no-repeat;
+				background-size: 100%;
+				background-attachment: scroll;
+				overflow-x:scroll;
+				overflow-y:scroll;
+			}
+			h2{
+				font-size: 70px;
+				margin-left: 200px;
+				padding-top: 350px;
+				font-weight: bold;
+				background: fixed;
+			}
+			.d{
+				text-decoration:none;
+			}
+			.lbox{
+				float: left;
+				height: 1400px;
+				width: 	700px;
+				margin-left: 200px;
+				border: 3px solid rgb(84, 157, 216);
+				display: inline;
+				border-radius: 70px;
+				background-color: white;
+				overflow:hidden;
+			}
+			.user1{
+				width: 280px;
+				height: 280px;
+				margin-left: 210px;
+			}
+			.a{
+				font-size: 70px;
+				margin-top: 5px;
+				text-align: center;
+			}
+			.server1{
+				float: left;
+				width: 100px;
+				margin-top: 130px;
+				margin-left: 90px;
+			}
+			.d1{
+				text-decoration:none;
+			}
+			.server2{
+				float: left;
+				width: 100px;
+				margin-top: 130px;
+				margin-left: 90px;
+			}
+			.d2{
+				text-decoration:none;
+			}
+			.server3{
+				float: left;
+				width: 100px;
+				margin-top: 130px;
+				margin-left: 90px;
+			}
+			.d3{
+				text-decoration:none;
+			}
+			.ser1{
+				font-size: 50px;
+				text-align: right;
+				margin-right: 105px;
+				margin-top: 190px;
+			}
+			.ser2{
+				font-size: 50px;
+				text-align: right;
+				margin-right: 105px;
+				margin-top: 210px;
+			}
+			.ser3{
+				font-size: 50px;
+				text-align: right;
+				margin-right: 105px;
+				margin-top: 225px;
+			}
+            .rbox{
+				float: left;
+				margin-left: 120px;
+				margin-right: 170px;
+				height: 1400px;
+				width: 2800px;
+				border: 3px solid rgb(84, 157, 216);
+				border-radius: 100px;
+				background-color: white;
+				overflow-y:scroll;
+			}
+			.collect{
+				float: left;
+				padding: 20px;
+				width: 120px;
+				margin-left: 50px;
+			}
+			.c{
+				float: left;
+				font-size: 70px;
+				margin-top: 40px;
+			}
+			.clear{
+				clear:both;
+			}
+			.single-member {
+				height: 500px;
+				width: 500px;
+				float: left;
+				margin-left: 100px;
+				margin-right: 20px;
+				background-color: #fff;
+				text-align: center;
+				position: relative;
+			}
+
+			.member-image img {
+				max-width: 100%;
+				vertical-align: middle;
+			}
+
+			h3 {
+				font-size: 24px;
+				font-weight: normal;
+				margin: 10px 0 0;
+				text-transform: uppercase;
+			}
+
+			h5 {
+				font-size: 16px;
+				font-weight: 300;
+				margin: 0 0 15px;
+				line-height: 22px;
+			}
+
+			p {
+				font-size: 14px;
+				font-weight: 300;
+				line-height: 22px;
+				padding: 0 30px;
+				margin-bottom: 10px;
+			}
+
+			.social-touch a {
+				display: inline-block;
+				width: 27px;
+				height: 26px;
+				vertical-align: middle;
+				margin: 0 2px;
+				background-image: url("social-icons.png");
+				background-repeat: no-repeat;
+				opacity: 0.7;
+				transition: 0.3s;
+			}
+
+			.social-touch a:hover {
+				opacity: 1;
+				transition: 0.3s;
+			}
+
+			.fb-touch {
+				background-position: 0 0;
+			}
+
+			.tweet-touch {
+				background-position: -35px 0;
+			}
+
+			.linkedin-touch {
+				background-position: -71px 0;
+			}
+
+			.icon-colored .fb-touch {
+				background-position: 0 -27px;
+			}
+
+			.icon-colored .tweet-touch {
+				background-position: -35px -27px;
+			}
+
+			.icon-colored .linkedin-touch {
+				background-position: -71px -27px;
+			}
+
+			.effect {
+				max-height: 302px;
+				min-height: 302px;
+				overflow: hidden;
+			}
+
+			.effect h3 {
+				padding-top: 7px;
+				line-height: 33px;
+			}
+
+
+			.effect .member-image {
+				border-bottom: 5px solid #1fb554;
+				height: 212px;
+				overflow: hidden;
+				width: 100%;
+				transition: 0.4s;
+				display: inline-block;
+				float: none;
+				vertical-align: middle;
+			}
+
+			.effect .member-info {
+				transition: 0.4s;
+			}
+
+			.effect .member-image img {
+				width: 100%;
+				vertical-align: bottom;
+			}
+
+			.effect .social-touch {
+				background-color: #1fb554;
+				float: left;
+				left: 0;
+				bottom: 0;
+				overflow: hidden;
+				padding: 5px 0;
+				width: 100%;
+				transition: 0.4s;
+			}
+
+			.effect:hover .member-image {
+				height: 81px;
+				transition: 0.4s;
+			}
+        </style>
+	</head>
+    <body style="min-width: 3900px;">
+		<h2><a href="Personal Show Page.html" target="_blank" class="d">Personal Page</a> > Collection Page</h2>
+            <div class="lbox">
+				<img class="user1" src="images/user.png">
+				<h1 class="a">Username</h1>
+				<img class="server1" src="images/service.png">
+				<h4 class="ser1"><a href="Service Page.html" target="_blank" class="d1">customer service</a></h4>
+				<img class="server2" src="images/service.png">
+				<h4 class="ser2"><a href="Service Page.html" target="_blank" class="d2">customer service</a></h4>
+				<img class="server3" src="images/service.png">
+				<h4 class="ser3"><a href="Service Page.html" target="_blank" class="d3">customer service</a></h4>
+			</div>
+            <div class="rbox" style="list-style-type:none">
+				<img class="collect" src="images/collection.png">
+				<h1 class="c">My collection</h1><br/>
+				<div class="clear"></div>
+				<li class="a">
+					<li class="a">
+						<div class="single-member effect">
+							<div class="member-image">
+								<img src="images/member_270x210.jpg" alt="Member">
+							</div>
+							<div class="member-info">
+								<h3>Sophia</h3>
+								<h5>ShowGilr</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+									labore et
+									dolore magna aliqua.</p>
+								<div class="social-touch">
+									<a class="fb-touch" href="#"></a>
+									<a class="tweet-touch" href="#"></a>
+									<a class="linkedin-touch" href="#"></a>
+								</div>
+					</li>
+					<li class="a">
+						<div class="single-member effect">
+							<div class="member-image">
+								<img src="images/member_270x210.jpg" alt="Member" width="">
+							</div>
+							<div class="member-info">
+								<h3>Sophia</h3>
+								<h5>ShowGilr</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+									labore et
+									dolore magna aliqua.</p>
+								<div class="social-touch">
+									<a class="fb-touch" href="#"></a>
+									<a class="tweet-touch" href="#"></a>
+									<a class="linkedin-touch" href="#"></a>
+								</div>
+					</li>
+					<li>
+						<div class="single-member effect">
+							<div class="member-image">
+								<img src="images/member_270x210.jpg" alt="Member">
+							</div>
+							<div class="member-info">
+								<h3>Sophia</h3>
+								<h5>ShowGilr</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+									labore et
+									dolore magna aliqua.</p>
+								<div class="social-touch">
+									<a class="fb-touch" href="#"></a>
+									<a class="tweet-touch" href="#"></a>
+									<a class="linkedin-touch" href="#"></a>
+								</div>
+					</li>
+					<li>
+						<div class="single-member effect">
+							<div class="member-image">
+								<img src="images/member_270x210.jpg" alt="Member">
+							</div>
+							<div class="member-info">
+								<h3>Sophia</h3>
+								<h5>ShowGilr</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+									labore et
+									dolore magna aliqua.</p>
+								<div class="social-touch">
+									<a class="fb-touch" href="#"></a>
+									<a class="tweet-touch" href="#"></a>
+									<a class="linkedin-touch" href="#"></a>
+								</div>
+					</li>
+					<li>
+						<div class="single-member effect">
+							<div class="member-image">
+								<img src="images/member_270x210.jpg" alt="Member">
+							</div>
+							<div class="member-info">
+								<h3>Sophia</h3>
+								<h5>ShowGilr</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+									labore et
+									dolore magna aliqua.</p>
+								<div class="social-touch">
+									<a class="fb-touch" href="#"></a>
+									<a class="tweet-touch" href="#"></a>
+									<a class="linkedin-touch" href="#"></a>
+								</div>
+					</li>
+					<li>
+						<div class="single-member effect">
+							<div class="member-image">
+								<img src="images/member_270x210.jpg" alt="Member">
+							</div>
+							<div class="member-info">
+								<h3>Sophia</h3>
+								<h5>ShowGilr</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+									labore et
+									dolore magna aliqua.</p>
+								<div class="social-touch">
+									<a class="fb-touch" href="#"></a>
+									<a class="tweet-touch" href="#"></a>
+									<a class="linkedin-touch" href="#"></a>
+								</div>
+					</li>
+					<li>
+						<div class="single-member effect">
+							<div class="member-image">
+								<img src="images/member_270x210.jpg" alt="Member">
+							</div>
+							<div class="member-info">
+								<h3>Sophia</h3>
+								<h5>ShowGilr</h5>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+									labore et
+									dolore magna aliqua.</p>
+								<div class="social-touch">
+									<a class="fb-touch" href="#"></a>
+									<a class="tweet-touch" href="#"></a>
+									<a class="linkedin-touch" href="#"></a>
+								</div>
+					</li>			</div>
+    </body>
+</html>
