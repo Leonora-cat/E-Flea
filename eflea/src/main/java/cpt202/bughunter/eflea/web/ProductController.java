@@ -63,9 +63,20 @@ public class ProductController {
     @GetMapping("/{name}/pages")
     @ApiOperation(value = "返回该用户所有商品", notes = "")
     public List<Product> userProduct(@PathVariable String name){
-        return productService.findProductByName(name);
+        return productService.allProduct();
     }
 
+    //selling and sold
+    @GetMapping("/{name}/selling")
+    @ApiOperation(value = "sold", notes = "")
+    public List<Product> selling(@PathVariable String name){
+        return productService.selling(name);
+    }
+    @GetMapping("/{name}/sold")
+    @ApiOperation(value = "selling", notes = "")
+    public List<Product> sold(@PathVariable String name){
+        return productService.sold(name);
+    }
     /**
      * 处理"/"的GET
      *返回该用户所有商品
@@ -158,14 +169,13 @@ public class ProductController {
     public String updateProduct(@PathVariable Long id, @RequestBody Product product) {
 
             try{
-                productService.update(id, product.getName(), product.getPrice(), product.getTag(), product.getLifeTime(),
+                productService.update(id, product.getPrice(),  product.getLifeTime(),
                         product.getDescription());
             }catch (Exception e) {
                 //返回错误信息
                 e.printStackTrace();
                 return("error");
             }
-
         return "success";
     }
 
@@ -225,6 +235,7 @@ public class ProductController {
             productService.insertImage(pic1, pic2, pic3, id);
         } catch (Exception e) {
             e.printStackTrace();
+
         }
 
 

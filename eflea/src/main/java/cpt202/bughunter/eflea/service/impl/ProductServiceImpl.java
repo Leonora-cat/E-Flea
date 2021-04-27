@@ -54,14 +54,24 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.searchAll(key);
     }
 
+    @Override
+    public List<Product> selling(String name) {
+        return productMapper.selling(name);
+    }
+
+    @Override
+    public List<Product> sold(String name) {
+        return productMapper.sold(name);
+    }
+
     ;
     @Override
     public void delete(Long id){
         productMapper.deleteProduct(id);
     };
     @Override
-    public void update(Long id, String name, Double price, String tag, String lifeTime, String description){
-        productMapper.updateProduct(id, name, price, tag, lifeTime, description);
+    public void update(Long id, Double price,  String lifeTime, String description){
+        productMapper.updateProduct(id, price, lifeTime, description);
     }
     @Override
     public void insertImage(byte[] image1, byte[] image2, byte[] image3, Long id){

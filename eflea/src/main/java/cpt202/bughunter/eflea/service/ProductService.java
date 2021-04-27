@@ -16,9 +16,11 @@ public interface ProductService {
     List<Product> findByTag(@Param("tag") String tag);
     Product findProductByPid(Long id);
     List<Product> searchAll(String key);
+    List<Product> selling(@Param("name") String name);
+    List<Product> sold(@Param("name") String name);
     void insert(Long id, String name, Double price, String tag, String lifeTime, String description, String uid, Boolean state, Date time);
     void delete(Long id);
-    void update(Long id, String name, Double price, String tag1, String lifeTime, String description);
+    void update(Long id, Double price, String lifeTime, String description);
     void insertImage(byte[] image1, byte[] image2, byte[] image3, Long id);
     void updateState(Boolean state, Long pid);
     Product findProductByPName(String name);

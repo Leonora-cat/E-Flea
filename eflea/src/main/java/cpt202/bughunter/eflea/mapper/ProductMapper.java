@@ -36,6 +36,12 @@ public interface ProductMapper {
     @Select("SELECT * FROM PRODUCT WHERE NAME LIKE #{key}")
     List<Product> searchAll(@Param("key") String key);
 
+    @Select("SELECT * FROM PRODUCT WHERE UID = #{name} AND STATE = 0")
+    List<Product> selling(@Param("name") String name);
+
+    @Select("SELECT * FROM PRODUCT WHERE UID = #{name} AND STATE = 1")
+    List<Product> sold(@Param("name") String name);
+
     @Insert("INSERT INTO PRODUCT(PID, NAME, PRICE, TAG, lifeTime, description, uid, state, time) VALUES(#{pid}, #{name}, " +
             "#{price}, #{tag}, #{lifeTime}, #{description}, #{uid}, #{state}, #{time})")
     void insertProduct(@Param("pid") Long id, @Param("name") String name, @Param("price") Double price, @Param("tag") String tag,
@@ -47,7 +53,7 @@ public interface ProductMapper {
 
     @Update("UPDATE PRODUCT SET NAME = #{name}, PRICE = #{price}, TAG = #{tag}, LIFETIME = #{lifeTime}, " +
             "DESCRIPTION = #{description} WHERE PID = #{pid}")
-    void updateProduct(@Param("pid") Long id, @Param("name") String name, @Param("price") Double price, @Param("tag") String tag1,
+    void updateProduct(@Param("pid") Long id, @Param("price") Double price,
                        @Param("lifeTime") String lifeTime, @Param("description") String description);
 
     @Insert("UPDATE PRODUCT SET IMAGE1 = #{image1}, IMAGE2 = #{image2}, IMAGE3 = #{image3} WHERE PID = #{pid}")
