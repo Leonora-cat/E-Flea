@@ -1,30 +1,28 @@
 package cpt202.bughunter.eflea;
 
-import cpt202.bughunter.eflea.domain.Product;
-import cpt202.bughunter.eflea.mapper.ProductMapper;
-import lombok.extern.slf4j.Slf4j;
+import cpt202.bughunter.eflea.domain.User;
+import cpt202.bughunter.eflea.mapper.UserMapper;
+import cpt202.bughunter.eflea.service.UserService;
+import cpt202.bughunter.eflea.web.UserController;
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.RequestBuilder;
 
 @SpringBootTest
-@Slf4j
-@RunWith(SpringRunner.class)
 class EfleaApplicationTests {
 
+    @Autowired
+    private UserService userService;
 
-        @Autowired
-        private ProductMapper productMapper1;
-
-        @Test
-        @Rollback
-        public void test() throws Exception {
-
-
-
+    @Test
+    void contextLoads() {
+        User user = userService.toLogin("AAA","123");
+        Assertions.assertEquals(false,user.getSex());
     }
+
 }

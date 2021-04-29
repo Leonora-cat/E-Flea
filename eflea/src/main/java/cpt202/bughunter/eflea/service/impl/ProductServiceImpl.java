@@ -17,7 +17,6 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
 
     @Override
-//分页查询
     public List<Product> allProduct() {
 
         return productMapper.allProduct();
@@ -29,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void insert(Long id, String name, Double price, String tag, String lifeTime, String description, String uid,
-                      Boolean state, Date time) {
+                       Boolean state, Date time) {
         productMapper.insertProduct(id, name, price, tag, lifeTime, description, uid, state, time);
     }
     @Override

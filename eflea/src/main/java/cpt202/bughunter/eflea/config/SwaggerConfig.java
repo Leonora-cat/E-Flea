@@ -10,11 +10,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-/*
-/ http://localhost:20000/swagger-ui.html#/
-/swagger2 接口文档
-/
- */
+
 
 @Configuration
 @EnableSwagger2

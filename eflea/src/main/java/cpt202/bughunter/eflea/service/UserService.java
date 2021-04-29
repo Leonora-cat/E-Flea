@@ -10,8 +10,9 @@ public interface UserService {
     String resetPassword(String username, String email, String newPassword) throws Exception;
 
     User getUserByName(String username);
-    void insertUser(String username, String password, String email, Date dateOfBirth, Boolean sex);
+    User getUserByEmail(String email);
+    void insertUser(String username, String password,String major,String email, Date dateOfBirth, Boolean sex);
 
-    String editPersonalInfo(String username, String email, Date dateOfBirth, Boolean sex);
+    String editPersonalInfo(String username,String email,String major, Date dateOfBirth, Boolean sex);
 
 }

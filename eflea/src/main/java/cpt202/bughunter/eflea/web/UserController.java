@@ -1,6 +1,7 @@
 package cpt202.bughunter.eflea.web;
 
 import cpt202.bughunter.eflea.domain.User;
+import cpt202.bughunter.eflea.mapper.MessageMapper;
 import cpt202.bughunter.eflea.service.UserService;
 import cpt202.bughunter.eflea.util.CipherUtil;
 import io.swagger.annotations.ApiOperation;
@@ -14,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@CrossOrigin
 public class UserController {
     private boolean cipherOn = false;
     @Autowired
@@ -49,6 +49,7 @@ public class UserController {
         String email = (String) accountInfo.get("email");
         String dateOfBirthString = (String) accountInfo.get("year") + "-" + accountInfo.get("month") + "-" + accountInfo.get("day");
         String sexString = (String) accountInfo.get("sex");
+        String major = (String) accountInfo.get("major");
         System.out.println(dateOfBirthString);
         Boolean sex = null;
         Date dateOfBirth = null;
@@ -69,16 +70,17 @@ public class UserController {
         }
         System.out.println(dateOfBirth);
 
-        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
-            userMap.put("msg", "empty username or password");
-            return userMap;
-        }
         User userWithInputUsername = userService.getUserByName(username);
         if (userWithInputUsername != null) {
-            userMap.put("msg", "username already exists");
+            userMap.put("msg", "Username already exists");
             return userMap;
         }
-        userService.insertUser(username, password, email, dateOfBirth, sex);
+        User userWithInputEmail = userService.getUserByEmail(email);
+        if (userWithInputEmail != null) {
+            userMap.put("msg", "Email already exists");
+            return userMap;
+        }
+        userService.insertUser(username, password, major, email, dateOfBirth, sex);
         userMap.put("msg", "successfully registered");
         return userMap;
     }
@@ -86,7 +88,7 @@ public class UserController {
     @PostMapping("/forgetPassword")
     @ApiOperation(value = "forgetPassword", notes = "if user forgets his password, he can reset his password using username and email")
     public String resetPassword(@RequestBody Map<String, Object> accountInfo) throws Exception {
-        return userService.resetPassword((String)accountInfo.get("username"),(String)accountInfo.get("email"),(String)accountInfo.get("newPassword"));
+        return userService.resetPassword((String) accountInfo.get("username"), (String) accountInfo.get("email"), (String) accountInfo.get("newPassword"));
     }
 
     @GetMapping("/{username}/home")
@@ -103,12 +105,12 @@ public class UserController {
     public String editPersonalInfo(@RequestBody Map<String, Object> accountInfo) {
         String username = (String) accountInfo.get("username");
         String email = (String) accountInfo.get("email");
+        String major = (String) accountInfo.get("major");
         String dateOfBirthString = (String) accountInfo.get("year") + "-" + accountInfo.get("month") + "-" + accountInfo.get("day");
         Boolean sex = null;
-        if(accountInfo.get("sex").equals(0)){
+        if (accountInfo.get("sex").equals(0)) {
             sex = false;
-        }
-        else{
+        } else {
             sex = true;
         }
         Date dateOfBirth = null;
@@ -123,6 +125,6 @@ public class UserController {
             }
             dateOfBirth = new Date(dateOfBirthDate.getTime());
         }
-        return userService.editPersonalInfo(username, email, dateOfBirth, sex);
+        return userService.editPersonalInfo(username, email,major, dateOfBirth, sex);
     }
 }

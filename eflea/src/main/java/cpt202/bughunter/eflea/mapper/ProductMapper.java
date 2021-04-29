@@ -9,8 +9,6 @@ import java.util.List;
 
 @Mapper
 public interface ProductMapper {
-
-    //查询所有
     @Select("select * from product")
     List<Product> allProduct();
 
@@ -45,13 +43,13 @@ public interface ProductMapper {
     @Insert("INSERT INTO PRODUCT(PID, NAME, PRICE, TAG, lifeTime, description, uid, state, time) VALUES(#{pid}, #{name}, " +
             "#{price}, #{tag}, #{lifeTime}, #{description}, #{uid}, #{state}, #{time})")
     void insertProduct(@Param("pid") Long id, @Param("name") String name, @Param("price") Double price, @Param("tag") String tag,
-                      @Param("lifeTime") String lifeTime, @Param("description") String description, @Param("uid") String uid,
-                      @Param("state") Boolean state, @Param("time") Date time);
+                       @Param("lifeTime") String lifeTime, @Param("description") String description, @Param("uid") String uid,
+                       @Param("state") Boolean state, @Param("time") Date time);
 
     @Delete("DELETE FROM product WHERE PID = #{pid}")
     void deleteProduct(@Param("pid") Long pid);
 
-    @Update("UPDATE PRODUCT SET NAME = #{name}, PRICE = #{price}, TAG = #{tag}, LIFETIME = #{lifeTime}, " +
+    @Update("UPDATE PRODUCT SET PRICE = #{price}, LIFETIME = #{lifeTime}, " +
             "DESCRIPTION = #{description} WHERE PID = #{pid}")
     void updateProduct(@Param("pid") Long id, @Param("price") Double price,
                        @Param("lifeTime") String lifeTime, @Param("description") String description);

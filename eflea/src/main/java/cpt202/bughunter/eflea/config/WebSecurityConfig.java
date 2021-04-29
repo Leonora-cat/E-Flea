@@ -1,4 +1,4 @@
-package cpt202.bughunter.eflea.config;//package cpt202.bughunter.eflea.config;
+//package cpt202.bughunter.eflea.config;
 //
 //
 //import org.springframework.context.annotation.Configuration;
