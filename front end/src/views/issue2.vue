@@ -75,7 +75,7 @@
 				<div class="first">x</div>
 				<div class="middle">
 					<label>
-						<input type="text" v-model="searchKey.key" @keyup.enter.native="search">
+						<input type="text" v-model="searchKey.key">
 					</label>
 				</div>
 
@@ -321,7 +321,7 @@
 					method: 'put',
 				}).then((res) => {
 					if (res.data != 0) {
-						this.$message.success("Sucess");
+						this.$message.success("Success");
 						this.showModal = false;
 					} else {
 						this.$message.error("Product name have been used");
@@ -330,10 +330,14 @@
 					this.temp = res.data;
 					let data = new FormData();
 					for (let i = 0; i < 3; i++) {
-
-						data.append("images", this.images[i].raw);
+							try{
+							data.append("images", this.images1[i].raw);
+							}catch(e){
+								this.$message.error("3 pictures are required");
+								return;
+							}
 					}
-					console.log(this.images);
+					console.log(this.images1);
 					axios({
 						url: `http://127.0.0.1:9000/products/uploadImage${this.temp}`,
 
@@ -349,8 +353,8 @@
 						} else {
 							this.showModal = false;
 							console.log(res.data);
-							this.$message.success("Sucess");
-							this.images = [];
+							this.$message.success("Success");
+							this.images1 = [];
 						}
 
 					})

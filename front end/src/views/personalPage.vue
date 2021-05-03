@@ -688,7 +688,6 @@
 							url: 'http://127.0.0.1:9000/products/' + this.$route.params.username + '/selling',
 							method: 'get',
 						}).then((res) => {
-
 							this.pageList = res.data;
 							this.totalSize = this.pageList.length;
 							console.log(this.pageList[0])
@@ -808,7 +807,7 @@
 				}).then((res) => {
 					if (res.data != 0) {
 						this.$refs.mask2.style.display = "none";
-						this.$message.success("Sucess");
+						this.$message.success("Success");
 					} else {
 						this.$message.error("Product name have been used");
 					}
@@ -817,8 +816,12 @@
 					this.temp = res.data;
 					let data = new FormData();
 					for (let i = 0; i < 3; i++) {
-
-						data.append("images", this.images[i].raw);
+							try{
+							data.append("images", this.images[i].raw);
+							}catch(e){
+								this.$message.error("3 pictures are required");
+								return;
+							}
 					}
 					console.log(this.images);
 
@@ -831,7 +834,7 @@
 							'Content-Type': 'multipart/form-data'
 						}
 					}).then((res) => {
-						if (res.data !== "Success") {
+						if (res.data != "success") {
 							this.$message.error("Upload picture failed! Pleas choose no more than 3 images!");
 							console.log("err");
 						} else {

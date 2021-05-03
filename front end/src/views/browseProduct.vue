@@ -50,7 +50,7 @@
 					  </textarea>
               </li>
               <li>
-                <el-upload class="upload-demo" :on-change="onUploadChange" :limit="3" :file-list="this.images"
+                <el-upload class="upload-demo" :on-change="onUploadChange" :limit="3" :file-list="this.images1"
                   :auto-upload="false" list-type="picture" action="">
                   <el-button size="small" type="primary">Upload</el-button>
                   <div slot="tip" class="el-upload__tip"> 3 jpg/png only，no more than 500kb</div>
@@ -439,7 +439,7 @@
           method: 'put',
         }).then((res) => {
           if (res.data != 0) {
-            this.$message.success("Sucess");
+            this.$message.success("Success");
             this.showModal = false;
           } else {
             this.$message.error("Product name have been used");
@@ -448,9 +448,13 @@
           this.temp = res.data;
           let data = new FormData();
           for (let i = 0; i < 3; i++) {
-
-            data.append("images", this.images1[i].raw);
-          }
+							try{
+							data.append("images", this.images1[i].raw);
+							}catch(e){
+								this.$message.error("3 pictures are required");
+								return;
+							}
+					}
           console.log(this.images1);
           axios({
             url: `http://127.0.0.1:9000/products/uploadImage${this.temp}`,
@@ -467,7 +471,7 @@
             } else {
               this.showModal = false;
               console.log(res.data);
-              this.$message.success("Sucess");
+              this.$message.success("Success");
               this.images1 = [];
             }
 
