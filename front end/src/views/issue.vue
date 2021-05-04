@@ -84,6 +84,13 @@
 
 			</div>
 
+      <div>
+        <el-checkbox-group v-model="checkboxGroup1">
+          <el-checkbox-button v-for="opt in opts" :label="opt" :key="opt">{{opt}}</el-checkbox-button>
+        </el-checkbox-group>
+      </div>
+
+
 		</div>
 
 
@@ -176,10 +183,12 @@
 
 <script>
 	import axios from "axios";
+  const opts = [''];
 	export default {
 		name: "issue",
 		data() {
 			return {
+        checkboxGroup1: [],
 				messageNum: "",
 				searchKey: {
 					key: "",
