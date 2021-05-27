@@ -16,6 +16,9 @@ public interface ProductMapper {
     @Select("SELECT * FROM PRODUCT WHERE tag = #{tag} ORDER BY PID DESC LIMIT 0, 8")
     List<Product> displayFirstProduct(@Param("tag") String tag);
 
+    @Select("SELECT * FROM PRODUCT ORDER BY PRICE")
+    List<Product> displayProductByPrice();
+
     @Select("SELECT * FROM PRODUCT WHERE tag = #{tag} ORDER BY PID DESC")
     List<Product> findByTag(@Param("tag") String tag);
 
@@ -64,5 +67,10 @@ public interface ProductMapper {
     @Update("UPDATE PRODUCT SET TIME = #{time} WHERE PID = #{pid}")
     void publishTime(@Param("time") Date date, @Param("pid") Long pid);
 
+    @Select("SELECT COUNT(*) FROM product WHERE state = '1'")
+    int getTotalSoldNum();
+
+    @Select("SELECT COUNT(*) FROM product WHERE state = '0'")
+    int getTotalSellingNum();
 
 }

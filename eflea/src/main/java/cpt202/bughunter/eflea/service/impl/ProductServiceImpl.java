@@ -21,6 +21,12 @@ public class ProductServiceImpl implements ProductService {
 
         return productMapper.allProduct();
     }
+
+    @Override
+    public List<Product> displayProductByPrice() {
+        return productMapper.displayProductByPrice();
+    }
+
     @Override
     public List<Product> displayAll(String tag){
         return productMapper.displayFirstProduct(tag);
@@ -110,6 +116,16 @@ public class ProductServiceImpl implements ProductService {
         List<Product> lists = productMapper.allProduct();
         return new PageInfo<Product>(lists);
 
+    }
+
+    @Override
+    public int getTotalSoldNum() {
+        return productMapper.getTotalSoldNum();
+    }
+
+    @Override
+    public int getTotalSellingNum() {
+        return productMapper.getTotalSellingNum();
     }
 
 }

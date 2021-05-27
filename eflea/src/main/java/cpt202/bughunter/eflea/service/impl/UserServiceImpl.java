@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -53,6 +54,22 @@ public class UserServiceImpl implements UserService {
         userMapper.updateDateOfBirth(dateOfBirth, username);
         userMapper.updateSex(sex, username);
         userMapper.updateMajor(major,username);
+        return "success";
+    }
+
+    @Override
+    public int getTotalUserNum() {
+        return userMapper.getTotalUserNum();
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return userMapper.getUsers();
+    }
+
+    @Override
+    public String deleteUser(String username) {
+        userMapper.deleteUser(username);
         return "success";
     }
 

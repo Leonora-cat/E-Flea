@@ -3,6 +3,7 @@ package cpt202.bughunter.eflea.service;
 import cpt202.bughunter.eflea.domain.User;
 
 import java.sql.Date;
+import java.util.List;
 
 public interface UserService {
     User toLogin(String username, String password);
@@ -14,5 +15,11 @@ public interface UserService {
     void insertUser(String username, String password,String major,String email, Date dateOfBirth, Boolean sex);
 
     String editPersonalInfo(String username,String email,String major, Date dateOfBirth, Boolean sex);
+
+    int getTotalUserNum();
+
+    List<User> getUsers();
+
+    String deleteUser(String username);
 
 }

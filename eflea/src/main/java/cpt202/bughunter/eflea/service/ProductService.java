@@ -11,6 +11,7 @@ import java.util.Map;
 
 public interface ProductService {
     List<Product> allProduct();
+    List<Product> displayProductByPrice();
     List<Product> displayAll(String tag);
     List<Product> findProductByName(String name);
     List<Product> findByTag(@Param("tag") String tag);
@@ -28,6 +29,9 @@ public interface ProductService {
     List<Product> search(String key, String name);
     List<Product> findAllProductByPageF(int pageNum,int pageSize);
     PageInfo<Product> findAllProductByPageS(int pageNum, int pageSize);
+
+    int getTotalSoldNum();
+    int getTotalSellingNum();
 
 
 }

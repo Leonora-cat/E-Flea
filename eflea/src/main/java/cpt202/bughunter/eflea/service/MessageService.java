@@ -14,4 +14,6 @@ public interface MessageService {
     List<Message> getContactDetail(String user1, String user2);
 
     void addNewContent(String sender, String receiver, String content);
+
+    int getTotalMessageNum();
 }

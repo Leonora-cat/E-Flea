@@ -72,6 +72,13 @@ public class ProductController {
     }
 
 
+    @GetMapping("/{name}/pages/price")
+    @ApiOperation(value = "return all products order by price", notes = "")
+    public List<Product> displayProductByPrice(@PathVariable String name) {
+        return productService.displayProductByPrice();
+    }
+
+    //
     @GetMapping("/{tag}")
     @ApiOperation(value = "return all products with the same key", notes = "")
     public List<Product> tag(@PathVariable String tag) {
@@ -212,5 +219,23 @@ public class ProductController {
 
         return "success";
     }
+    @GetMapping("/getTotalSellingNum")
+    @ApiOperation(value="getTotalSellingNum", notes="get total selling number")
+    public Map<String, Integer> getTotalSellingNum(){
+        int totalNum = productService.getTotalSellingNum();
+        Map<String, Integer> totalNumber = new HashMap<>();
+        totalNumber.put("totalNum",totalNum);
+        return totalNumber;
+    }
+
+    @GetMapping("/getTotalSoldNum")
+    @ApiOperation(value="getTotalSoldNum", notes="get total sold number")
+    public Map<String, Integer> getTotalSoldNum(){
+        int totalNum = productService.getTotalSoldNum();
+        Map<String, Integer> totalNumber = new HashMap<>();
+        totalNumber.put("totalNum",totalNum);
+        return totalNumber;
+    }
+
 
 }

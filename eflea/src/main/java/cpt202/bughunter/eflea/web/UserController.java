@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -126,5 +127,26 @@ public class UserController {
             dateOfBirth = new Date(dateOfBirthDate.getTime());
         }
         return userService.editPersonalInfo(username, email,major, dateOfBirth, sex);
+    }
+
+    @GetMapping("/getTotalUserNum")
+    @ApiOperation(value="getTotalUserNum", notes="get total user number")
+    public Map<String, Integer> getTotalUserNum(){
+        int totalNum = userService.getTotalUserNum();
+        Map<String, Integer> totalNumber = new HashMap<>();
+        totalNumber.put("totalNum",totalNum);
+        return totalNumber;
+    }
+
+    @GetMapping("/getUsers")
+    @ApiOperation(value="getUsers", notes="get total users")
+    public List<User> getUsers(){
+        return userService.getUsers();
+    }
+
+    @DeleteMapping("/deleteUser/{username}")
+    @ApiOperation(value="getUsers", notes="get total users")
+    public String deleteUser(@PathVariable("username") String username){
+        return userService.deleteUser(username);
     }
 }

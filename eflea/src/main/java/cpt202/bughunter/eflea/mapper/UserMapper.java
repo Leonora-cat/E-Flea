@@ -4,6 +4,7 @@ import cpt202.bughunter.eflea.domain.User;
 import org.apache.ibatis.annotations.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Mapper
 public interface UserMapper {
@@ -26,15 +27,24 @@ public interface UserMapper {
     @Update("UPDATE user SET password = #{password} WHERE username = #{username} AND email = #{email}")
     void resetPassword(@Param("username") String username, @Param("email") String email, @Param("password") String password);
 
-    @Select("UPDATE user SET email=#{email} WHERE username=#{username}")
+    @Update("UPDATE user SET email=#{email} WHERE username=#{username}")
     User updateEmail(@Param("email") String email, @Param("username") String username);
 
-    @Select("UPDATE user SET major=#{major} WHERE username=#{username}")
+    @Update("UPDATE user SET major=#{major} WHERE username=#{username}")
     User updateMajor(@Param("major") String major, @Param("username") String username);
 
-    @Select("UPDATE user SET dateOfBirth=#{dateOfBirth} WHERE username=#{username}")
+    @Update("UPDATE user SET dateOfBirth=#{dateOfBirth} WHERE username=#{username}")
     User updateDateOfBirth(@Param("dateOfBirth") Date dateOfBirth, @Param("username") String username);
 
-    @Select("UPDATE user SET sex=#{sex} WHERE username=#{username}")
+    @Update("UPDATE user SET sex=#{sex} WHERE username=#{username}")
     User updateSex(@Param("sex") Boolean sex, @Param("username") String username);
+
+    @Select("SELECT COUNT(*) FROM user")
+    int getTotalUserNum();
+
+    @Select("SELECT * FROM user")
+    List<User> getUsers();
+
+    @Delete("DELETE FROM user WHERE username=#{username}")
+    void deleteUser(@Param("username") String username);
 }

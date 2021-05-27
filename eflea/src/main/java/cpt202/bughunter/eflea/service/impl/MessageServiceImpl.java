@@ -34,4 +34,9 @@ public class MessageServiceImpl implements MessageService {
     public void addNewContent(String sender, String receiver, String content) {
         messageMapper.addNewContent(sender,receiver,content);
     }
+
+    @Override
+    public int getTotalMessageNum() {
+        return messageMapper.getTotalMessageNum();
+    }
 }

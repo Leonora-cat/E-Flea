@@ -8,7 +8,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -40,5 +42,14 @@ public class MessageController {
     public List<Message> addNewContent(@RequestBody Message message) {
         messageService.addNewContent(message.getSender(), message.getReceiver(), message.getContent());
         return messageService.getContactDetail(message.getSender(), message.getReceiver());
+    }
+
+    @GetMapping("/getTotalMessageNum")
+    @ApiOperation(value="getTotalMessageNum", notes="get total message number")
+    public Map<String, Integer> getTotalMessageNum(){
+        int totalNum = messageService.getTotalMessageNum();
+        Map<String, Integer> totalNumber = new HashMap<>();
+        totalNumber.put("totalNum",totalNum);
+        return totalNumber;
     }
 }
